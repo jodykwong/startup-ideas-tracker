@@ -1,7 +1,7 @@
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
-import node from '@astrojs/node';
+import vercel from '@astrojs/vercel/serverless';
 import path from 'path';
 
 // https://astro.build/config
@@ -12,13 +12,11 @@ export default defineConfig({
       applyBaseStyles: false, // 我们将使用自定义的基础样式
     })
   ],
-  output: 'hybrid', // 支持SSR和静态生成的混合模式
+  output: 'server', // Vercel serverless functions
   // 部署配置
-  site: process.env.SITE_URL || 'http://localhost:3000',
-  // 对于 GitHub Pages 部署，取消注释下面的行
-  // base: process.env.BASE_PATH || '/',
-  adapter: node({
-    mode: 'standalone'
+  site: process.env.SITE_URL || 'https://startup-ideas-tracker.vercel.app',
+  adapter: vercel({
+    webAnalytics: { enabled: true }
   }),
   server: {
     port: 3000,
