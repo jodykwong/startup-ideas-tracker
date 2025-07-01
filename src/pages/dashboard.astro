@@ -115,21 +115,21 @@ const user = session?.user
           <div class="card">
             <h2 class="text-xl font-semibold text-neutral-900 mb-6">快速操作</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              <button class="btn-primary justify-center p-4 h-auto flex-col space-y-2">
+              <button id="add-idea-btn" class="btn-primary justify-center p-4 h-auto flex-col space-y-2">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
                 </svg>
                 <span>添加新想法</span>
               </button>
-              
-              <button class="btn-secondary justify-center p-4 h-auto flex-col space-y-2">
+
+              <button id="ai-enhance-btn" class="btn-secondary justify-center p-4 h-auto flex-col space-y-2">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
                 </svg>
                 <span>AI增强</span>
               </button>
-              
-              <button class="btn-secondary justify-center p-4 h-auto flex-col space-y-2">
+
+              <button id="view-analytics-btn" class="btn-secondary justify-center p-4 h-auto flex-col space-y-2">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
                 </svg>
@@ -155,7 +155,7 @@ const user = session?.user
               </div>
               <h3 class="text-lg font-medium text-neutral-900 mb-2">还没有想法</h3>
               <p class="text-neutral-600 mb-4">开始记录您的第一个创业想法吧！</p>
-              <button class="btn-primary">
+              <button id="add-first-idea-btn" class="btn-primary">
                 添加想法
               </button>
             </div>
@@ -203,4 +203,34 @@ const user = session?.user
       alert('网络错误，请重试')
     }
   })
+
+  // Quick action buttons
+  document.getElementById('add-idea-btn')?.addEventListener('click', () => {
+    window.location.href = '/dashboard/ideas'
+  })
+
+  document.getElementById('add-first-idea-btn')?.addEventListener('click', () => {
+    window.location.href = '/dashboard/ideas'
+  })
+
+  document.getElementById('ai-enhance-btn')?.addEventListener('click', () => {
+    alert('AI增强功能开发中，敬请期待！\n\n即将支持：\n• 市场分析和竞争对手研究\n• 功能建议和产品优化\n• 商业模式分析')
+  })
+
+  document.getElementById('view-analytics-btn')?.addEventListener('click', () => {
+    window.location.href = '/dashboard/analytics'
+  })
+
+  // Register service worker
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js')
+        .then((registration) => {
+          console.log('SW registration successful: ', registration.scope)
+        })
+        .catch((registrationError) => {
+          console.log('SW registration failed: ', registrationError)
+        })
+    })
+  }
 </script>
