@@ -1,0 +1,14 @@
+{
+  "framework": "astro",
+  "functions": {
+    "**/*.js": {
+      "runtime": "nodejs20.x"
+    },
+    "**/*.mjs": {
+      "runtime": "nodejs20.x"
+    },
+    "**/*.ts": {
+      "runtime": "nodejs20.x"
+    }
+  }
+}

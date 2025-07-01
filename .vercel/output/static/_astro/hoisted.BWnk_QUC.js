@@ -1,0 +1,1 @@
+import"./Layout.astro_astro_type_script_index_1_lang.rL_5vgxQ.js";window.location.search.includes("code=")&&!window.location.search.includes("error=")&&setTimeout(()=>{window.location.href="/dashboard"},2e3);

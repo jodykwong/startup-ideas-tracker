@@ -1,0 +1,1 @@
+import"./Layout.astro_astro_type_script_index_1_lang.rL_5vgxQ.js";document.getElementById("signout-btn")?.addEventListener("click",async()=>{try{(await(await fetch("/api/auth/signout",{method:"POST",headers:{"Content-Type":"application/json"}})).json()).success?window.location.href="/auth":alert("退出登录失败，请重试")}catch{alert("网络错误，请重试")}});
