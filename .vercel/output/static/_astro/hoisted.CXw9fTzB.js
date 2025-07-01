@@ -1,1 +1,0 @@
-import"./Layout.astro_astro_type_script_index_1_lang.rL_5vgxQ.js";document.addEventListener("DOMContentLoaded",()=>{const e=document.getElementById("mobile-menu-button"),t=document.getElementById("mobile-menu");e&&t&&e.addEventListener("click",()=>{const n=e.getAttribute("aria-expanded")==="true";e.setAttribute("aria-expanded",(!n).toString()),t.classList.toggle("hidden")})});

@@ -1,1 +1,0 @@
-{"success":true,"message":"Database connection successful","data":{"connectionStatus":"Connected","tableExists":true,"recordCount":0,"authStatus":"Error","user":null,"environment":{"supabaseUrl":"Set","supabaseKey":"Set","geminiKey":"Set","nodeEnv":"production"}},"timestamp":"2025-07-01T22:44:05.320Z"}
