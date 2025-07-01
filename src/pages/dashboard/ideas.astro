@@ -67,15 +67,26 @@ const ideas = []
 
   <!-- Main Content -->
   <main class="flex-1 bg-neutral-50">
-    <!-- Header -->
-    <div class="bg-white border-b border-neutral-200">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <!-- Hero Section -->
+    <div class="bg-gradient-to-r from-primary-600 to-secondary-600 text-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div class="flex items-center justify-between">
           <div>
-            <h1 class="text-2xl font-bold text-neutral-900">我的想法</h1>
-            <p class="text-neutral-600 mt-1">管理和评估您的创业想法</p>
+            <h1 class="text-3xl font-bold sm:text-4xl mb-2">我的想法</h1>
+            <p class="text-lg text-primary-100">管理和评估您的创业想法，让每个创意都得到系统化的分析</p>
           </div>
-          <button id="add-idea-btn" class="btn-primary">
+          <div class="hidden sm:block">
+            <button id="add-idea-btn" class="btn bg-white text-primary-600 hover:bg-primary-50 px-6 py-3 rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+              </svg>
+              添加新想法
+            </button>
+          </div>
+        </div>
+        <!-- Mobile Add Button -->
+        <div class="sm:hidden mt-6">
+          <button id="add-idea-btn-mobile" class="btn bg-white text-primary-600 hover:bg-primary-50 w-full justify-center px-6 py-3 rounded-lg font-semibold shadow-lg">
             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
             </svg>
@@ -88,26 +99,31 @@ const ideas = []
     <!-- Content -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {user ? (
-        <div class="space-y-6">
+        <div class="space-y-8">
           <!-- Filters and Search -->
-          <div class="card">
+          <div class="card-elevated">
             <div class="flex flex-col sm:flex-row gap-4">
               <div class="flex-1">
-                <input 
-                  type="text" 
-                  placeholder="搜索想法..." 
-                  class="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                />
+                <div class="relative">
+                  <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                  </svg>
+                  <input
+                    type="text"
+                    placeholder="搜索想法..."
+                    class="input pl-10"
+                  />
+                </div>
               </div>
-              <div class="flex gap-2">
-                <select class="px-4 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500">
+              <div class="flex gap-3">
+                <select class="input min-w-32">
                   <option value="">所有状态</option>
                   <option value="draft">草稿</option>
                   <option value="evaluating">评估中</option>
                   <option value="validated">已验证</option>
                   <option value="developing">开发中</option>
                 </select>
-                <select class="px-4 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500">
+                <select class="input min-w-32">
                   <option value="">所有分类</option>
                   <option value="saas">SaaS</option>
                   <option value="mobile">移动应用</option>
@@ -211,6 +227,7 @@ const ideas = []
 
   // Add idea modal functionality
   const addIdeaBtn = document.getElementById('add-idea-btn')
+  const addIdeaBtnMobile = document.getElementById('add-idea-btn-mobile')
   const addFirstIdeaBtn = document.getElementById('add-first-idea-btn')
   const modal = document.getElementById('add-idea-modal')
   const closeModalBtn = document.getElementById('close-modal-btn')
@@ -226,6 +243,7 @@ const ideas = []
   }
 
   addIdeaBtn?.addEventListener('click', showModal)
+  addIdeaBtnMobile?.addEventListener('click', showModal)
   addFirstIdeaBtn?.addEventListener('click', showModal)
   closeModalBtn?.addEventListener('click', hideModal)
 

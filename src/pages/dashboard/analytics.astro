@@ -75,28 +75,43 @@ const analytics = {
 
   <!-- Main Content -->
   <main class="flex-1 bg-neutral-50">
-    <!-- Header -->
-    <div class="bg-white border-b border-neutral-200">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <!-- Hero Section -->
+    <div class="bg-gradient-to-r from-secondary-600 to-primary-600 text-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div class="flex items-center justify-between">
           <div>
-            <h1 class="text-2xl font-bold text-neutral-900">数据分析</h1>
-            <p class="text-neutral-600 mt-1">深入了解您的创业想法表现</p>
+            <h1 class="text-3xl font-bold sm:text-4xl mb-2">数据分析</h1>
+            <p class="text-lg text-secondary-100">深入了解您的创业想法表现，基于数据做出明智决策</p>
           </div>
-          <div class="flex space-x-3">
-            <select class="px-4 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500">
-              <option value="7">最近7天</option>
-              <option value="30">最近30天</option>
-              <option value="90">最近90天</option>
-              <option value="365">最近一年</option>
+          <div class="hidden sm:flex space-x-3">
+            <select class="bg-white/10 backdrop-blur-sm border border-white/20 text-white rounded-lg px-4 py-2 focus:ring-2 focus:ring-white/50">
+              <option value="7" class="text-neutral-900">最近7天</option>
+              <option value="30" class="text-neutral-900">最近30天</option>
+              <option value="90" class="text-neutral-900">最近90天</option>
+              <option value="365" class="text-neutral-900">最近一年</option>
             </select>
-            <button class="btn-secondary">
+            <button class="btn bg-white text-secondary-600 hover:bg-secondary-50 px-6 py-2 rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
               <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
               </svg>
               导出报告
             </button>
           </div>
+        </div>
+        <!-- Mobile Controls -->
+        <div class="sm:hidden mt-6 space-y-3">
+          <select class="bg-white/10 backdrop-blur-sm border border-white/20 text-white rounded-lg px-4 py-2 w-full focus:ring-2 focus:ring-white/50">
+            <option value="7" class="text-neutral-900">最近7天</option>
+            <option value="30" class="text-neutral-900">最近30天</option>
+            <option value="90" class="text-neutral-900">最近90天</option>
+            <option value="365" class="text-neutral-900">最近一年</option>
+          </select>
+          <button class="btn bg-white text-secondary-600 hover:bg-secondary-50 w-full justify-center px-6 py-2 rounded-lg font-semibold shadow-lg">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+            </svg>
+            导出报告
+          </button>
         </div>
       </div>
     </div>
@@ -107,25 +122,45 @@ const analytics = {
         <div class="space-y-8">
           <!-- Key Metrics -->
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="card text-center">
-              <div class="text-3xl font-bold text-primary-600 mb-2">{analytics.totalIdeas}</div>
-              <div class="text-sm text-neutral-600">总想法数</div>
-              <div class="text-xs text-green-600 mt-1">+0% 本周</div>
+            <div class="card-elevated text-center group hover:scale-105 transition-transform duration-300">
+              <div class="text-3xl font-bold text-primary-600 mb-2 group-hover:text-primary-700 transition-colors">{analytics.totalIdeas}</div>
+              <div class="text-sm text-neutral-600 mb-1">总想法数</div>
+              <div class="flex items-center justify-center text-xs text-green-600">
+                <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                </svg>
+                +0% 本周
+              </div>
             </div>
-            <div class="card text-center">
-              <div class="text-3xl font-bold text-secondary-600 mb-2">{analytics.evaluatedIdeas}</div>
-              <div class="text-sm text-neutral-600">已评估</div>
-              <div class="text-xs text-green-600 mt-1">+0% 本周</div>
+            <div class="card-elevated text-center group hover:scale-105 transition-transform duration-300">
+              <div class="text-3xl font-bold text-secondary-600 mb-2 group-hover:text-secondary-700 transition-colors">{analytics.evaluatedIdeas}</div>
+              <div class="text-sm text-neutral-600 mb-1">已评估</div>
+              <div class="flex items-center justify-center text-xs text-green-600">
+                <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                </svg>
+                +0% 本周
+              </div>
             </div>
-            <div class="card text-center">
-              <div class="text-3xl font-bold text-accent-600 mb-2">{analytics.aiEnhanced}</div>
-              <div class="text-sm text-neutral-600">AI增强</div>
-              <div class="text-xs text-green-600 mt-1">+0% 本周</div>
+            <div class="card-elevated text-center group hover:scale-105 transition-transform duration-300">
+              <div class="text-3xl font-bold text-accent-600 mb-2 group-hover:text-accent-700 transition-colors">{analytics.aiEnhanced}</div>
+              <div class="text-sm text-neutral-600 mb-1">AI增强</div>
+              <div class="flex items-center justify-center text-xs text-green-600">
+                <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                </svg>
+                +0% 本周
+              </div>
             </div>
-            <div class="card text-center">
-              <div class="text-3xl font-bold text-success-600 mb-2">{analytics.validated}</div>
-              <div class="text-sm text-neutral-600">验证通过</div>
-              <div class="text-xs text-green-600 mt-1">+0% 本周</div>
+            <div class="card-elevated text-center group hover:scale-105 transition-transform duration-300">
+              <div class="text-3xl font-bold text-success-600 mb-2 group-hover:text-success-700 transition-colors">{analytics.validated}</div>
+              <div class="text-sm text-neutral-600 mb-1">验证通过</div>
+              <div class="flex items-center justify-center text-xs text-green-600">
+                <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                </svg>
+                +0% 本周
+              </div>
             </div>
           </div>
 
