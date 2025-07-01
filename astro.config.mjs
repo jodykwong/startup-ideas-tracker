@@ -12,10 +12,12 @@ export default defineConfig({
       applyBaseStyles: false, // 我们将使用自定义的基础样式
     })
   ],
-  output: 'hybrid', // 混合模式：静态页面 + 服务器API
+  output: 'server', // 服务器模式：支持API路由
   // 部署配置
   site: process.env.SITE_URL || 'https://startup-ideas-tracker.vercel.app',
-  adapter: vercel(),
+  adapter: vercel({
+    runtime: 'nodejs20.x'
+  }),
   server: {
     port: 3000,
     host: true
