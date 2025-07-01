@@ -1,0 +1,319 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import '@/styles/globals.css'
+---
+
+<Layout title="登录 / 注册 - Startup Ideas Tracker">
+  <div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-50 to-secondary-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md w-full space-y-8">
+      <!-- Header -->
+      <div class="text-center">
+        <h1 class="text-3xl font-bold text-gradient mb-2">
+          Startup Ideas Tracker
+        </h1>
+        <h2 class="text-xl font-semibold text-neutral-900 mb-2">
+          欢迎回来
+        </h2>
+        <p class="text-neutral-600">
+          登录您的账户或创建新账户开始管理创业想法
+        </p>
+      </div>
+
+      <!-- Auth Form -->
+      <div class="card">
+        <!-- Tab Navigation -->
+        <div class="flex border-b border-neutral-200 mb-6">
+          <button 
+            id="signin-tab" 
+            class="flex-1 py-2 px-4 text-center font-medium border-b-2 border-primary-500 text-primary-600"
+          >
+            登录
+          </button>
+          <button 
+            id="signup-tab" 
+            class="flex-1 py-2 px-4 text-center font-medium border-b-2 border-transparent text-neutral-500 hover:text-neutral-700"
+          >
+            注册
+          </button>
+        </div>
+
+        <!-- Sign In Form -->
+        <form id="signin-form" class="space-y-4">
+          <div>
+            <label for="signin-email" class="block text-sm font-medium text-neutral-700 mb-1">
+              邮箱地址
+            </label>
+            <input 
+              id="signin-email" 
+              name="email" 
+              type="email" 
+              required 
+              class="input"
+              placeholder="your@email.com"
+            />
+          </div>
+          
+          <div>
+            <label for="signin-password" class="block text-sm font-medium text-neutral-700 mb-1">
+              密码
+            </label>
+            <input 
+              id="signin-password" 
+              name="password" 
+              type="password" 
+              required 
+              class="input"
+              placeholder="••••••••"
+            />
+          </div>
+
+          <div class="flex items-center justify-between">
+            <label class="flex items-center">
+              <input type="checkbox" class="rounded border-neutral-300 text-primary-600 focus:ring-primary-500">
+              <span class="ml-2 text-sm text-neutral-600">记住我</span>
+            </label>
+            <a href="/auth/reset" class="text-sm text-primary-600 hover:text-primary-500">
+              忘记密码？
+            </a>
+          </div>
+
+          <button type="submit" class="btn-primary w-full justify-center" id="signin-btn">
+            <span class="signin-text">登录</span>
+            <div class="loading-spinner w-4 h-4 hidden"></div>
+          </button>
+        </form>
+
+        <!-- Sign Up Form -->
+        <form id="signup-form" class="space-y-4 hidden">
+          <div>
+            <label for="signup-email" class="block text-sm font-medium text-neutral-700 mb-1">
+              邮箱地址
+            </label>
+            <input 
+              id="signup-email" 
+              name="email" 
+              type="email" 
+              required 
+              class="input"
+              placeholder="your@email.com"
+            />
+          </div>
+          
+          <div>
+            <label for="signup-password" class="block text-sm font-medium text-neutral-700 mb-1">
+              密码
+            </label>
+            <input 
+              id="signup-password" 
+              name="password" 
+              type="password" 
+              required 
+              class="input"
+              placeholder="至少6个字符"
+            />
+          </div>
+
+          <div>
+            <label for="signup-confirm-password" class="block text-sm font-medium text-neutral-700 mb-1">
+              确认密码
+            </label>
+            <input 
+              id="signup-confirm-password" 
+              name="confirmPassword" 
+              type="password" 
+              required 
+              class="input"
+              placeholder="再次输入密码"
+            />
+          </div>
+
+          <div class="flex items-center">
+            <input id="terms" type="checkbox" required class="rounded border-neutral-300 text-primary-600 focus:ring-primary-500">
+            <label for="terms" class="ml-2 text-sm text-neutral-600">
+              我同意 <a href="/terms" class="text-primary-600 hover:text-primary-500">服务条款</a> 和 
+              <a href="/privacy" class="text-primary-600 hover:text-primary-500">隐私政策</a>
+            </label>
+          </div>
+
+          <button type="submit" class="btn-primary w-full justify-center" id="signup-btn">
+            <span class="signup-text">创建账户</span>
+            <div class="loading-spinner w-4 h-4 hidden"></div>
+          </button>
+        </form>
+
+        <!-- Error/Success Messages -->
+        <div id="auth-message" class="hidden mt-4 p-3 rounded-lg"></div>
+      </div>
+
+      <!-- Footer -->
+      <div class="text-center">
+        <p class="text-sm text-neutral-600">
+          还没有账户？
+          <button id="switch-to-signup" class="text-primary-600 hover:text-primary-500 font-medium">
+            立即注册
+          </button>
+        </p>
+        <p class="text-sm text-neutral-600 mt-2">
+          已有账户？
+          <button id="switch-to-signin" class="text-primary-600 hover:text-primary-500 font-medium hidden">
+            立即登录
+          </button>
+        </p>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  // Tab switching
+  const signinTab = document.getElementById('signin-tab')
+  const signupTab = document.getElementById('signup-tab')
+  const signinForm = document.getElementById('signin-form')
+  const signupForm = document.getElementById('signup-form')
+  const switchToSignup = document.getElementById('switch-to-signup')
+  const switchToSignin = document.getElementById('switch-to-signin')
+  const authMessage = document.getElementById('auth-message')
+
+  function showSignin() {
+    signinTab?.classList.add('border-primary-500', 'text-primary-600')
+    signinTab?.classList.remove('border-transparent', 'text-neutral-500')
+    signupTab?.classList.remove('border-primary-500', 'text-primary-600')
+    signupTab?.classList.add('border-transparent', 'text-neutral-500')
+    signinForm?.classList.remove('hidden')
+    signupForm?.classList.add('hidden')
+    switchToSignup?.classList.remove('hidden')
+    switchToSignin?.classList.add('hidden')
+    clearMessage()
+  }
+
+  function showSignup() {
+    signupTab?.classList.add('border-primary-500', 'text-primary-600')
+    signupTab?.classList.remove('border-transparent', 'text-neutral-500')
+    signinTab?.classList.remove('border-primary-500', 'text-primary-600')
+    signinTab?.classList.add('border-transparent', 'text-neutral-500')
+    signupForm?.classList.remove('hidden')
+    signinForm?.classList.add('hidden')
+    switchToSignin?.classList.remove('hidden')
+    switchToSignup?.classList.add('hidden')
+    clearMessage()
+  }
+
+  function showMessage(message: string, type: 'success' | 'error') {
+    if (authMessage) {
+      authMessage.textContent = message
+      authMessage.className = `mt-4 p-3 rounded-lg ${
+        type === 'success' 
+          ? 'bg-success-100 text-success-800 border border-success-200' 
+          : 'bg-error-100 text-error-800 border border-error-200'
+      }`
+    }
+  }
+
+  function clearMessage() {
+    if (authMessage) {
+      authMessage.classList.add('hidden')
+    }
+  }
+
+  // Event listeners
+  signinTab?.addEventListener('click', showSignin)
+  signupTab?.addEventListener('click', showSignup)
+  switchToSignup?.addEventListener('click', showSignup)
+  switchToSignin?.addEventListener('click', showSignin)
+
+  // Form submissions
+  signinForm?.addEventListener('submit', async (e) => {
+    e.preventDefault()
+    const btn = document.getElementById('signin-btn')
+    const text = btn?.querySelector('.signin-text')
+    const spinner = btn?.querySelector('.loading-spinner')
+    
+    // Show loading
+    text?.classList.add('hidden')
+    spinner?.classList.remove('hidden')
+    btn?.setAttribute('disabled', 'true')
+
+    try {
+      const formData = new FormData(e.target as HTMLFormElement)
+      const response = await fetch('/api/auth/signin', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: formData.get('email'),
+          password: formData.get('password')
+        })
+      })
+
+      const result = await response.json()
+
+      if (result.success) {
+        showMessage('登录成功！正在跳转...', 'success')
+        setTimeout(() => {
+          window.location.href = '/dashboard'
+        }, 1000)
+      } else {
+        showMessage(result.error || '登录失败', 'error')
+      }
+    } catch (error) {
+      showMessage('网络错误，请重试', 'error')
+    } finally {
+      // Hide loading
+      text?.classList.remove('hidden')
+      spinner?.classList.add('hidden')
+      btn?.removeAttribute('disabled')
+    }
+  })
+
+  signupForm?.addEventListener('submit', async (e) => {
+    e.preventDefault()
+    const btn = document.getElementById('signup-btn')
+    const text = btn?.querySelector('.signup-text')
+    const spinner = btn?.querySelector('.loading-spinner')
+    
+    const formData = new FormData(e.target as HTMLFormElement)
+    const password = formData.get('password') as string
+    const confirmPassword = formData.get('confirmPassword') as string
+
+    // Validate passwords match
+    if (password !== confirmPassword) {
+      showMessage('密码不匹配', 'error')
+      return
+    }
+
+    // Show loading
+    text?.classList.add('hidden')
+    spinner?.classList.remove('hidden')
+    btn?.setAttribute('disabled', 'true')
+
+    try {
+      const response = await fetch('/api/auth/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: formData.get('email'),
+          password: password
+        })
+      })
+
+      const result = await response.json()
+
+      if (result.success) {
+        showMessage(result.message || '注册成功！', 'success')
+        if (result.data?.session) {
+          setTimeout(() => {
+            window.location.href = '/dashboard'
+          }, 1000)
+        }
+      } else {
+        showMessage(result.error || '注册失败', 'error')
+      }
+    } catch (error) {
+      showMessage('网络错误，请重试', 'error')
+    } finally {
+      // Hide loading
+      text?.classList.remove('hidden')
+      spinner?.classList.add('hidden')
+      btn?.removeAttribute('disabled')
+    }
+  })
+</script>

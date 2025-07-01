@@ -1,0 +1,74 @@
+---
+// Hero section component
+---
+
+<section class="relative overflow-hidden bg-gradient-to-br from-primary-50 via-white to-secondary-50 py-20 sm:py-32">
+  <!-- Background decoration -->
+  <div class="absolute inset-0 -z-10">
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary-200 rounded-full opacity-20 blur-3xl"></div>
+    <div class="absolute bottom-0 right-1/4 translate-y-1/2 w-80 h-80 bg-secondary-200 rounded-full opacity-20 blur-3xl"></div>
+  </div>
+  
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <!-- Badge -->
+      <div class="inline-flex items-center px-4 py-2 rounded-full bg-primary-100 text-primary-700 text-sm font-medium mb-8">
+        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+        </svg>
+        AI驱动的创业想法管理
+      </div>
+      
+      <!-- Main heading -->
+      <h1 class="text-4xl font-bold tracking-tight text-neutral-900 sm:text-6xl lg:text-7xl">
+        <span class="block">系统化管理您的</span>
+        <span class="block text-gradient">创业想法</span>
+      </h1>
+      
+      <!-- Description -->
+      <p class="mt-6 text-lg leading-8 text-neutral-600 max-w-3xl mx-auto">
+        集成Gemini AI增强和Paul Graham评估框架的现代化创业想法管理平台。
+        从想法记录到可行性评估，让每个创意都得到系统化的分析和管理。
+      </p>
+      
+      <!-- CTA Buttons -->
+      <div class="mt-10 flex items-center justify-center gap-x-6">
+        <a href="/dashboard" class="btn-primary btn-lg">
+          立即开始
+          <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+          </svg>
+        </a>
+        <a href="#features" class="btn-secondary btn-lg">
+          了解更多
+          <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+          </svg>
+        </a>
+      </div>
+      
+      <!-- Stats -->
+      <div class="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-3 lg:gap-16">
+        <div class="text-center">
+          <div class="text-3xl font-bold text-primary-600">AI增强</div>
+          <div class="mt-2 text-sm text-neutral-600">智能分析和建议</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-bold text-primary-600">PG框架</div>
+          <div class="mt-2 text-sm text-neutral-600">系统化评估方法</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-bold text-primary-600">可视化</div>
+          <div class="mt-2 text-sm text-neutral-600">直观的数据展示</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+    <svg class="w-6 h-6 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+    </svg>
+  </div>
+</section>
