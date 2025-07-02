@@ -1,16 +1,5 @@
-# startup-ideas-tracker
+# Startup Ideas Management Platform
 
-一个现代化的创业想法管理平台
+This repository is reserved for the new startup ideas management platform based on Paul Graham's framework.
 
-## 项目状态
-项目已清空，准备重新构建
-
-## 技术栈
-即将选择新的技术栈进行重构
-
-## 开发计划
-- [ ] 选择技术栈
-- [ ] 项目初始化
-- [ ] 核心功能开发
-- [ ] 部署上线
-
+Coming soon...
