@@ -113,18 +113,7 @@
     @apply nav-link text-primary-600 bg-primary-100 font-semibold;
   }
   
-  /* 模态框组件 */
-  .modal-overlay {
-    @apply fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 transition-all duration-300;
-  }
-
-  .modal-overlay.hidden {
-    @apply invisible opacity-0 pointer-events-none;
-  }
-
-  .modal-content {
-    @apply bg-white rounded-2xl p-6 w-full max-w-md max-h-[90vh] overflow-auto shadow-2xl transform transition-all duration-300 ease-adaline;
-  }
+  /* 模态框组件 - 移动到utilities层以避免重复 */
   
   /* 徽章组件 */
   .badge {
@@ -240,5 +229,115 @@
     min-width: 1rem !important;
     min-height: 1rem !important;
     flex-shrink: 0 !important;
+  }
+
+  /* 统一图标尺寸约束系统 */
+  .icon-sm svg,
+  svg.icon-sm,
+  .w-4.h-4 svg,
+  svg.w-4.h-4 {
+    width: 1rem !important;
+    height: 1rem !important;
+    max-width: 1rem !important;
+    max-height: 1rem !important;
+    min-width: 1rem !important;
+    min-height: 1rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  .icon-md svg,
+  svg.icon-md,
+  .w-5.h-5 svg,
+  svg.w-5.h-5,
+  .w-6.h-6 svg,
+  svg.w-6.h-6 {
+    width: 1.5rem !important;
+    height: 1.5rem !important;
+    max-width: 1.5rem !important;
+    max-height: 1.5rem !important;
+    min-width: 1.5rem !important;
+    min-height: 1.5rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  .icon-lg svg,
+  svg.icon-lg,
+  .w-8.h-8 svg,
+  svg.w-8.h-8 {
+    width: 2rem !important;
+    height: 2rem !important;
+    max-width: 2rem !important;
+    max-height: 2rem !important;
+    min-width: 2rem !important;
+    min-height: 2rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* 空状态组件标准化 */
+  .empty-state {
+    @apply text-center py-12;
+  }
+
+  .empty-state-icon {
+    @apply w-16 h-16 bg-neutral-100 rounded-full flex items-center justify-center mx-auto mb-4 flex-shrink-0;
+    width: 4rem !important;
+    height: 4rem !important;
+    max-width: 4rem !important;
+    max-height: 4rem !important;
+    min-width: 4rem !important;
+    min-height: 4rem !important;
+  }
+
+  .empty-state-icon svg {
+    width: 2rem !important;
+    height: 2rem !important;
+    max-width: 2rem !important;
+    max-height: 2rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  .empty-state-title {
+    @apply text-lg font-medium text-neutral-900 mb-2;
+  }
+
+  .empty-state-description {
+    @apply text-neutral-600 mb-6;
+  }
+
+  /* 模态框动画增强 */
+  .modal-overlay {
+    @apply fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4;
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  .modal-overlay.hidden {
+    @apply invisible opacity-0 pointer-events-none;
+    animation: fadeOut 0.3s ease-out;
+  }
+
+  .modal-content {
+    @apply bg-white rounded-2xl p-6 w-full max-w-md max-h-[90vh] overflow-auto shadow-2xl;
+    animation: slideUp 0.3s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+  }
+
+  @keyframes slideUp {
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
   }
 }
