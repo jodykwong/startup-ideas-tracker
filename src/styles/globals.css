@@ -203,8 +203,18 @@
   .safe-top {
     padding-top: env(safe-area-inset-top);
   }
-  
+
   .safe-bottom {
     padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  /* 防止圆形元素异常放大 */
+  .rounded-full {
+    flex-shrink: 0;
+  }
+
+  /* 确保SVG图标不会异常放大 */
+  svg {
+    flex-shrink: 0;
   }
 }
