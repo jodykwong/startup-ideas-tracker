@@ -47,14 +47,8 @@ const canonicalURL = Astro.site ? new URL(Astro.url.pathname, Astro.site) : Astr
     <!-- Robots -->
     {noIndex && <meta name="robots" content="noindex, nofollow" />}
     
-    <!-- Preload critical resources -->
-    <link rel="preload" href="/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin />
-    
     <!-- Theme Color -->
-    <meta name="theme-color" content="#667eea" />
-    
-    <!-- Apple Touch Icon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#3b82f6" />
     
     <!-- Manifest -->
     <link rel="manifest" href="/site.webmanifest" />
@@ -107,8 +101,10 @@ const canonicalURL = Astro.site ? new URL(Astro.url.pathname, Astro.site) : Astr
       // 性能监控
       if ('performance' in window) {
         window.addEventListener('load', () => {
-          const perfData = performance.getEntriesByType('navigation')[0]
-          console.log('页面加载时间:', perfData.loadEventEnd - perfData.loadEventStart, 'ms')
+          const perfData = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming
+          if (perfData && perfData.loadEventEnd && perfData.loadEventStart) {
+            console.log('页面加载时间:', perfData.loadEventEnd - perfData.loadEventStart, 'ms')
+          }
         })
       }
     </script>
@@ -132,13 +128,9 @@ const canonicalURL = Astro.site ? new URL(Astro.url.pathname, Astro.site) : Astr
     <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script> -->
     
     <style>
-      /* 自定义字体加载 */
-      @font-face {
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 100 900;
-        font-display: swap;
-        src: url('/fonts/inter-var.woff2') format('woff2');
+      /* 使用系统字体 */
+      body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
       }
       
       /* 减少动画对于偏好减少动画的用户 */
