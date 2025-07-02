@@ -210,11 +210,35 @@
 
   /* 防止圆形元素异常放大 */
   .rounded-full {
-    flex-shrink: 0;
+    flex-shrink: 0 !important;
   }
 
   /* 确保SVG图标不会异常放大 */
   svg {
-    flex-shrink: 0;
+    flex-shrink: 0 !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+  }
+
+  /* 强制约束星形SVG图标 */
+  svg[viewBox="0 0 20 20"] {
+    width: 1rem !important;
+    height: 1rem !important;
+    max-width: 1rem !important;
+    max-height: 1rem !important;
+    min-width: 1rem !important;
+    min-height: 1rem !important;
+  }
+
+  /* 强制约束所有小尺寸SVG */
+  .w-4.h-4 svg,
+  svg.w-4.h-4 {
+    width: 1rem !important;
+    height: 1rem !important;
+    max-width: 1rem !important;
+    max-height: 1rem !important;
+    min-width: 1rem !important;
+    min-height: 1rem !important;
+    flex-shrink: 0 !important;
   }
 }
